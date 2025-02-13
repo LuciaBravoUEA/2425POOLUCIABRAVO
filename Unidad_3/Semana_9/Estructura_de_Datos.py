@@ -34,7 +34,7 @@ class Producto:
         return f"{self.id_producto} Nombre: {self.nombre} Cantidad: {self.cantidad} Precio: $ {self.precio}"
 
 
-# Clase Inventario
+# definir la clase Inventario
 class Inventario:
     def __init__(self):
         self.productos = []
