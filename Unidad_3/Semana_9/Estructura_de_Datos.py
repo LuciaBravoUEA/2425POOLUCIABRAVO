@@ -10,7 +10,7 @@ class Producto:
         self.cantidad = cantidad
         self.precio = precio
 
-    # Getters
+    # Método Constructor getters
     def get_id(self):
         return self.id_producto
 
@@ -23,7 +23,7 @@ class Producto:
     def get_precio(self):
         return self.precio
 
-    # Setters
+    #Método Constructor setters
     def set_cantidad(self, cantidad):
         self.cantidad = cantidad
 
