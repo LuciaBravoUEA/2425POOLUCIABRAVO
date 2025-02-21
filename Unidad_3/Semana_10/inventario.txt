@@ -1,3 +1,0 @@
-[{"id_producto": "56326589", "nombre": "harina", "cantidad": 300, "precio": 0.98},
- {"id_producto": "987456", "nombre": "Canguil", "cantidad": 250, "precio": 0.85},
- {"id_producto": "3256894", "nombre": "gelatina gelatoni", "cantidad": 58, "precio": 1.1}]
