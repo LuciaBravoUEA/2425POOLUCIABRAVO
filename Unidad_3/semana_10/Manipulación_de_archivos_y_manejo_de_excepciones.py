@@ -1,3 +1,6 @@
+# desarrollo del sistema de inventario  utilizando archivos para archivos de
+# almacenar y recuperar la información del inventario y manejo de excepciones.
+
 import json
 import os
 
@@ -35,6 +38,7 @@ class Producto:
 
 # Definir la clase Inventario
 class Inventario:
+# agregamos el nombre del archivo que se almacenera la lista de productos
     def __init__(self, archivo="inventario.txt"):
         self.archivo = archivo
         self.productos = []
@@ -45,6 +49,7 @@ class Inventario:
             with open(self.archivo, "w") as file:
                 json.dump([p.__dict__ for p in self.productos], file)
             print("Inventario guardado exitosamente.")
+# usamor PermissionError para dar permisos y poder escribir en el archivo
         except PermissionError:
             print("Error: No tienes permisos para escribir en el archivo.")
         except Exception as e:
@@ -59,6 +64,7 @@ class Inventario:
                 productos_cargados = json.load(file)
                 self.productos = [Producto(**p) for p in productos_cargados]
             print("Inventario cargado exitosamente.")
+    # usamos FiliNotFoundError si el archivo no existe, no esta en el directorio.
         except (FileNotFoundError, json.JSONDecodeError):
             self.productos = []
             print("Error al cargar el inventario, archivo corrupto o vacío.")

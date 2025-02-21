@@ -1,0 +1,3 @@
+[{"id_producto": "256849", "nombre": "Gelatoni", "cantidad": 58, "precio": 1.1},
+ {"id_producto": "487941", "nombre": "Canguil", "cantidad": 80, "precio": 0.85},
+ {"id_producto": "245314", "nombre": "Papas de fundas", "cantidad": 250, "precio": 0.55}]
