@@ -1,0 +1,12 @@
+001,labial,10,7.5
+Base,6,10,2.0
+002,base,50,4.8
+003,lápiz labial,30,1.5
+004,rubor,80,4.5
+005,Polvo traslucido,40,700.0
+006,sombras,90,3.0
+007,serum,20,5.0
+008,crema,10,8.0
+009,corrector de ojeras,150,3.5
+010,paleta de contornos,60,8.0
+011,delineador ,30,4.7

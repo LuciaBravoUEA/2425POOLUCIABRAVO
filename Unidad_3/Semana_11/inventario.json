@@ -1,0 +1,69 @@
+[
+    {
+        "id_producto": "001",
+        "nombre": "labial",
+        "cantidad": 10,
+        "precio": 7.5
+    },
+    {
+        "id_producto": "002",
+        "nombre": "Base",
+        "cantidad": 50,
+        "precio": 4.8
+    },
+    {
+        "id_producto": "003",
+        "nombre": "l\u00e1piz labial",
+        "cantidad": 30,
+        "precio": 1.5
+    },
+    {
+        "id_producto": "004",
+        "nombre": "Rubor",
+        "cantidad": 80,
+        "precio": 4.5
+    },
+    {
+        "id_producto": "005",
+        "nombre": "polvo translucido",
+        "cantidad": 45,
+        "precio": 7.0
+    },
+    {
+        "id_producto": "006",
+        "nombre": "Sombras",
+        "cantidad": 90,
+        "precio": 3.0
+    },
+    {
+        "id_producto": "007",
+        "nombre": "serum",
+        "cantidad": 20,
+        "precio": 5.0
+    },
+    {
+        "id_producto": "008",
+        "nombre": "crema",
+        "cantidad": 10,
+        "precio": 8.0
+    },
+    {
+        "id_producto": "009",
+        "nombre": "corrector de ojeras",
+        "cantidad": 150,
+        "precio": 3.5
+    },
+    {
+        "id_producto": "010",
+        "nombre": "paleta de contornos",
+        "cantidad": 60,
+        "precio": 8.0
+    },
+    {
+        "id_producto": "011",
+        "nombre": "delineador",
+        "cantidad": 30,
+        "precio": 4.7
+    },
+
+]
