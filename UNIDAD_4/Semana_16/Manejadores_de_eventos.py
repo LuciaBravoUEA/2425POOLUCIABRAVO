@@ -2,66 +2,66 @@
 import tkinter as tk
 from tkinter import messagebox
 
-# Función para añadir una tarea a la lista
-def add_task(event=None):
-    task = task_entry.get().strip()
-    if task:
-        task_list.insert(tk.END, task)
-        task_entry.delete(0, tk.END)
-    else:
-        messagebox.showwarning("Advertencia", "No se puede añadir una tarea vacía.")
 
-# Función para marcar una tarea como completada
-def mark_completed(event=None):
-    try:
-        selected_index = task_list.curselection()[0]
-        task = task_list.get(selected_index)
-        if not task.startswith("✔ "):
-            task_list.delete(selected_index)
-            task_list.insert(selected_index, f"✔ {task}")
-            task_list.itemconfig(selected_index, {'fg': 'gray'})
-    except IndexError:
-        messagebox.showwarning("Advertencia", "Seleccione una tarea para marcar como completada.")
+class TaskManager:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Gestor de Tareas")
+        self.root.geometry("400x400")
 
-# Función para eliminar una tarea
-def delete_task(event=None):
-    try:
-        selected_index = task_list.curselection()[0]
-        task_list.delete(selected_index)
-    except IndexError:
-        messagebox.showwarning("Advertencia", "Seleccione una tarea para eliminar.")
+        self.tasks = []
 
-# Configuración de la ventana principal
-root = tk.Tk()
-root.title("Lista de Tareas")
-root.geometry("400x400")
+        self.entry = tk.Entry(root, width=40)
+        self.entry.pack(pady=10)
+        self.entry.bind("<Return>", self.add_task)
 
-# Entrada de texto para escribir una nueva tarea
-task_entry = tk.Entry(root, width=45)
-task_entry.pack(pady=10)
-task_entry.bind("<Return>", add_task)
+        self.task_listbox = tk.Listbox(root, width=50, height=15, selectmode=tk.SINGLE)
+        self.task_listbox.pack(pady=10)
 
-# Botón para añadir una tarea
-add_button = tk.Button(root, text="Añadir Tarea", command=add_task)
-add_button.pack()
+        self.add_button = tk.Button(root, text="Añadir Tarea", command=self.add_task)
+        self.add_button.pack()
 
-# Lista de tareas donde se mostrarán las tareas
-task_list = tk.Listbox(root, width=45, height=15)
-task_list.pack(pady=10)
+        self.complete_button = tk.Button(root, text="Marcar como Completada", command=self.complete_task)
+        self.complete_button.pack()
 
-# Botón para marcar una tarea como completada
-complete_button = tk.Button(root, text="Marcar como Completada", command=mark_completed)
-complete_button.pack()
+        self.delete_button = tk.Button(root, text="Eliminar Tarea", command=self.delete_task)
+        self.delete_button.pack()
 
-# Botón para eliminar una tarea
-delete_button = tk.Button(root, text="Eliminar Tarea", command=delete_task)
-delete_button.pack()
+        self.root.bind("<c>", lambda event: self.complete_task())
+        self.root.bind("<d>", lambda event: self.delete_task())
+        self.root.bind("<Delete>", lambda event: self.delete_task())
+        self.root.bind("<Escape>", lambda event: self.root.quit())
 
-# Atajos de teclado
-root.bind("<c>", mark_completed)
-root.bind("<d>", delete_task)
-root.bind("<Delete>", delete_task)
-root.bind("<Escape>", lambda event: root.quit())
+    def add_task(self, event=None):
+        task = self.entry.get().strip()
+        if task:
+            self.tasks.append((task, False))
+            self.task_listbox.insert(tk.END, task)
+            self.entry.delete(0, tk.END)
+        else:
+            messagebox.showwarning("Advertencia", "No puedes añadir una tarea vacía")
 
-# Iniciar la aplicación
-root.mainloop()
+    def complete_task(self):
+        try:
+            selected_index = self.task_listbox.curselection()[0]
+            task, completed = self.tasks[selected_index]
+            if not completed:
+                self.tasks[selected_index] = (task, True)
+                self.task_listbox.delete(selected_index)
+                self.task_listbox.insert(selected_index, f"✔ {task}")
+        except IndexError:
+            messagebox.showwarning("Advertencia", "Selecciona una tarea para marcar como completada")
+
+    def delete_task(self):
+        try:
+            selected_index = self.task_listbox.curselection()[0]
+            del self.tasks[selected_index]
+            self.task_listbox.delete(selected_index)
+        except IndexError:
+            messagebox.showwarning("Advertencia", "Selecciona una tarea para eliminar")
+
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = TaskManager(root)
+    root.mainloop()
